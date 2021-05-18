@@ -1,0 +1,13 @@
+plugins
+{
+    id 'base'
+}
+
+group 'br.dev.pedrolamarao.sandbox'
+version '1.0.0-SNAPSHOT'
+
+subprojects
+{
+    group project.parent.group
+    version project.parent.version
+}

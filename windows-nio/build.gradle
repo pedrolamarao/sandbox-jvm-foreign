@@ -1,0 +1,29 @@
+plugins 
+{
+    id 'java-library'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+dependencies
+{
+    implementation project(':windows')
+    
+    testImplementation platform(group: 'org.junit', name: 'junit-bom', version: '5.7.1')    
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter'
+
+    testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher'
+}
+
+compileJava.configure {
+    options.compilerArgs += [ '--enable-preview' ]
+}
+
+compileTestJava.configure {
+    options.compilerArgs += [ '--enable-preview', '--add-modules=jdk.incubator.foreign' ]
+}
+
+test.configure {
+    jvmArgs += [ '--enable-preview', '--add-modules=jdk.incubator.foreign', '--enable-native-access=ALL-UNNAMED' ]
+    useJUnitPlatform()
+}

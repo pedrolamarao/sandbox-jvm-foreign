@@ -1,0 +1,13 @@
+dependencyResolutionManagement 
+{
+    repositories
+    {
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'sandbox-jvm-foreign'
+
+include 'windows'
+include 'windows-nio'
+include 'windows-sendfile'
